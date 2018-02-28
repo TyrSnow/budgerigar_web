@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { Router, Switch, Route } from 'react-router';
-import { createBrowserHistory } from 'history';
-
+import history from './shared/history';
 import Index from './index/index';
 import Login from './login/index';
-
-const history = createBrowserHistory();
 
 class App extends React.Component {
   render() {
