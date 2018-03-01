@@ -6,7 +6,78 @@
     width: 300px;
     height: 100%;
     background: #EEE;
-    padding: 10px 1px 10px 0; }
+    padding: 0 2px 10px 0; }
     .m-project .m-projList .proj {
-      border-left: 5px solid #F00;
+      padding: 5px 10px;
+      border-left: 5px solid #DB4545;
+      background: #FFF;
+      margin-bottom: 5px; }
+      .m-project .m-projList .proj:hover {
+        cursor: pointer; }
+      .m-project .m-projList .proj.complete {
+        border-left: 5px solid #39AA56; }
+      .m-project .m-projList .proj .title {
+        display: flex;
+        justify-content: space-between; }
+    .m-project .m-projList .u-search {
+      padding: 30px 30px;
       background: #FFF; }
+    .m-project .m-projList .u-filter {
+      background: #FFF;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px; }
+      .m-project .m-projList .u-filter .filtBtn {
+        border: none;
+        background: none;
+        line-height: 30px;
+        outline: none;
+        padding: 0 10px; }
+        .m-project .m-projList .u-filter .filtBtn:hover {
+          cursor: pointer;
+          color: #3EAAAF; }
+        .m-project .m-projList .u-filter .filtBtn.active {
+          color: #3EAAAF;
+          border-bottom: 2px solid #3EAAAF; }
+        .m-project .m-projList .u-filter .filtBtn.newBtn {
+          align-self: flex-end; }
+  .m-project .m-projDetail {
+    width: 100%;
+    padding: 30px 50px; }
+    .m-project .m-projDetail > .ant-tabs {
+      height: 100%;
+      padding-bottom: 60px; }
+    .m-project .m-projDetail .title {
+      font-size: 24px;
+      line-height: 2;
+      border-bottom: 2px solid #EEE;
+      margin-bottom: 10px; }
+      .m-project .m-projDetail .title .anticon {
+        float: right; }
+      .m-project .m-projDetail .title .flags {
+        font-size: 12px; }
+        .m-project .m-projDetail .title .flags .flag {
+          width: 20px;
+          height: 20px;
+          margin-left: 10px; }
+  .m-project .m-translateTab .search {
+    padding: 20px 40px; }
+  .m-project .m-translateTab .filters {
+    padding: 20px 20px; }
+    .m-project .m-translateTab .filters .filter {
+      display: flex;
+      align-items: stretch;
+      line-height: 1.5;
+      margin-bottom: 10px; }
+      .m-project .m-translateTab .filters .filter .label {
+        width: 75px;
+        text-align: right;
+        margin-right: 10px; }
+      .m-project .m-translateTab .filters .filter .key {
+        padding: 0 10px;
+        margin: 0 5px;
+        border: 1px solid #3EAAAF;
+        cursor: pointer; }
+        .m-project .m-translateTab .filters .filter .key:hover {
+          color: #3EAAAF; }

@@ -6,10 +6,104 @@
     width: 300px;
     height: 100%;
     background: #EEE;
-    padding: 10px 1px 10px 0;
+    padding: 0 2px 10px 0;
     .proj {
-      border-left: 5px solid #F00;
+      padding: 5px 10px;
+      border-left: 5px solid #DB4545;
       background: #FFF;
+      margin-bottom: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+      &.complete {
+        border-left: 5px solid #39AA56;
+      }
+      .title {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .u-search{
+      padding: 30px 30px;
+      background: #FFF;
+    }
+    .u-filter{
+      background: #FFF;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px;
+      .filtBtn {
+        border: none;
+        background: none;
+        line-height: 30px;
+        outline: none;
+        padding: 0 10px;
+        &:hover {
+          cursor: pointer;
+          color: #3EAAAF;
+        }
+        &.active {
+          color: #3EAAAF;
+          border-bottom: 2px solid #3EAAAF;
+        }
+        &.newBtn {
+          align-self: flex-end;
+        }
+      }
+    }
+  }
+  .m-projDetail {
+    width: 100%;
+    padding: 30px 50px;
+    > .ant-tabs {
+      height: 100%;
+      padding-bottom: 60px;
+    }
+    .title {
+      font-size: 24px;
+      line-height: 2;
+      border-bottom: 2px solid #EEE;
+      margin-bottom: 10px;
+      .anticon {
+        float: right;
+      }
+      .flags {
+        font-size: 12px;
+        .flag {
+          width: 20px;
+          height: 20px;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  .m-translateTab {
+    .search {
+      padding: 20px 40px;
+    }
+    .filters {
+      padding: 20px 20px;
+      .filter {
+        display: flex;
+        align-items: stretch;
+        line-height: 1.5;
+        margin-bottom: 10px;
+        .label {
+          width: 75px;
+          text-align: right;
+          margin-right: 10px;
+        }
+        .key {
+          padding: 0 10px;
+          margin: 0 5px;
+          border: 1px solid #3EAAAF;
+          cursor: pointer;
+          &:hover {
+            color: #3EAAAF;
+          }
+        }
+      }
     }
   }
 }

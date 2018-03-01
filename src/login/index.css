@@ -1,0 +1,20 @@
+.p-login.page {
+  background: url(/images/background/login.jpg); }
+
+.p-login .inner {
+  width: 300px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  margin: 100px auto;
+  padding: 10px 30px; }
+  .p-login .inner .ant-tabs-nav-scroll {
+    text-align: center; }
+  .p-login .inner .title {
+    font-size: 30px;
+    text-align: center;
+    line-height: 2;
+    letter-spacing: -2px;
+    color: #666; }
+
+.p-login .login-form .login-form-button {
+  width: 100%; }
