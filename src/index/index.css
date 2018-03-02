@@ -9,7 +9,13 @@
     flex-shrink: 0;
     justify-content: space-between; }
     .p-index .header .logo {
-      padding: 0 20px 0 0; }
+      width: 283px;
+      text-align: center;
+      font-size: 20px;
+      padding: 0 20px 0 0;
+      color: #3eaaaf;
+      text-transform: uppercase;
+      letter-spacing: 2px; }
     .p-index .header .nav {
       width: 100%; }
     .p-index .header .link {
@@ -21,6 +27,8 @@
         background: #e8e8e8; }
       .p-index .header .link:hover {
         text-decoration: underline; }
+    .p-index .header .user .ant-dropdown-link {
+      white-space: nowrap; }
   .p-index .container {
     height: 100%;
     padding-bottom: 50px; }

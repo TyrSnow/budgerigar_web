@@ -81,3 +81,27 @@
         cursor: pointer; }
         .m-project .m-translateTab .filters .filter .key:hover {
           color: #3EAAAF; }
+  .m-project .m-tabPane .wrapper {
+    margin-bottom: 10px; }
+    .m-project .m-tabPane .wrapper .title {
+      font-size: 16px;
+      border: none;
+      border-left: 5px solid #3EAAAF;
+      padding-left: 10px; }
+    .m-project .m-tabPane .wrapper .inner {
+      padding: 0 15px; }
+    .m-project .m-tabPane .wrapper .setting {
+      display: flex;
+      justify-content: space-between; }
+      .m-project .m-tabPane .wrapper .setting .key {
+        width: 100px;
+        display: inline-block;
+        margin-right: 10px;
+        text-align: right; }
+        .m-project .m-tabPane .wrapper .setting .key:after {
+          content: ':'; }
+      .m-project .m-tabPane .wrapper .setting .value {
+        width: 100%;
+        display: inline-block; }
+      .m-project .m-tabPane .wrapper .setting .editBtn:hover {
+        color: #3EAAAF; }

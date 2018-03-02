@@ -106,4 +106,40 @@
       }
     }
   }
+  .m-tabPane {
+    .wrapper {
+      margin-bottom: 10px;
+      .title {
+        font-size: 16px;
+        border: none;
+        border-left: 5px solid #3EAAAF;
+        padding-left: 10px;
+      }
+      .inner {
+        padding: 0 15px;
+      }
+      .setting {
+        display: flex;
+        justify-content: space-between;
+        .key {
+          width: 100px;
+          display: inline-block;
+          margin-right: 10px;
+          text-align: right;
+          &:after {
+            content: ':';
+          }
+        }
+        .value {
+          width: 100%;
+          display: inline-block;
+        }
+        .editBtn {
+          &:hover {
+            color: #3EAAAF;
+          }
+        }
+      }
+    }
+  }
 }
