@@ -1,9 +1,31 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import * as Immutable from 'immutable';
 import {
   Icon,
+  Button,
+  Modal,
+  message,
 } from 'antd';
 
-class SettingTab extends React.Component {
+import { project } from '../../../store/actions';
+
+interface SettingTabProps {
+  deleteProj: any;
+  activeProj: any;
+}
+class SettingTab extends React.Component<SettingTabProps> {
+  deleteProj() {
+    Modal.confirm({
+      title: '删除操作将不可逆',
+      content: `确定要删除项目${this.props.activeProj.name}吗?`,
+      onOk: () => {
+        this.props.deleteProj(this.props.activeProj._id).catch(
+          (err: Error) => message.error(err.message),
+        );
+      }
+    });
+  }
   render() {
     return (
       <div className="m-tabPane m-settingTab">
@@ -37,9 +59,9 @@ class SettingTab extends React.Component {
           </div>
         </div>
         <div className="wrapper">
-          <h4 className="title">高级</h4>
+          <h4 className="title">删除项目</h4>
           <div className="inner">
-            <p>删除项目</p>
+            <Button type="danger" onClick={() => this.deleteProj()}>删除项目</Button>
           </div>
         </div>
       </div>
@@ -47,4 +69,13 @@ class SettingTab extends React.Component {
   }
 }
 
-export default SettingTab;
+export default connect(
+  (state: Immutable.Map<String, any>) => {
+    return {
+      activeProj: state.getIn(['project', 'activeProj']),
+    };
+  },
+  {
+    deleteProj: project.deleteProj,
+  }
+)(SettingTab);

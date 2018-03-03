@@ -1,8 +1,13 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import * as Immutable from 'immutable';
 import {
   Icon,
   Tabs,
+  Spin,
 } from 'antd';
+// import { ProjectListInfo } from '../../definition/project';
+
 import TranslateTab from './tabs/translate';
 import SettingTab from './tabs/setting';
 import KeywordTab from './tabs/keyword';
@@ -11,12 +16,22 @@ import OutputTab from './tabs/output';
 
 const { TabPane } = Tabs;
 
-class Detail extends React.Component {
+interface ListProps {
+  activeProj: any;
+  loadActive: boolean;
+}
+
+class Detail extends React.Component<ListProps> {
   render() {
+    if (!this.props.activeProj) {
+      return (
+        <div className="m-projDetail m-content empty">空空如也</div>
+      );
+    }
     return (
-      <div className="m-projDetail m-content">
+      <Spin spinning={this.props.loadActive} wrapperClassName="m-projDetail m-content">
         <div className="title">
-          <span className="name">项目名称</span>
+          <span className="name">{this.props.activeProj.name}</span>
           <span className="flags">
             <img className="flag" src="/images/dev/cn.jpg" alt="中文" />
             <img className="flag" src="/images/dev/cn.jpg" alt="中文" />
@@ -40,9 +55,19 @@ class Detail extends React.Component {
             <SettingTab />
           </TabPane>
         </Tabs>
-      </div>
+      </Spin>
     );
   }
 }
 
-export default Detail;
+export default connect(
+  (state: Immutable.Map<String, any>) => {
+    return {
+      activeProj: state.getIn(['project', 'activeProj']),
+      loadActive: state.getIn(['project', 'loadActive']),
+    };
+  },
+  {
+
+  }
+)(Detail);

@@ -1,44 +1,45 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import * as Immutable from 'immutable';
 import {
   Input,
+  Icon,
 } from 'antd';
 const { Search } = Input;
+import CreateForm from './components/createForm';
+import { project } from '../../store/actions';
 
-interface ProjectInfo {
-  id: string;
-  name: string;
-  last_update: string;
-  status: number;
-  total: number;
-  ready: number;
+interface ListProps {
+  list: Immutable.List<Immutable.Map<string, string>>;
+  createVisible: boolean;
+  showCreate: any;
+  loadProject: any;
+  active: any;
 }
 
-const projects = [{
-  id: '1',
-  name: '项目0',
-  status: 0,
-  last_update: '2017-02-03 17:32:23',
-  total: 100,
-  ready: 83,
-}, {
-  id: '2',
-  name: '项目1',
-  status: 0,
-  last_update: '2017-02-03 17:32:23',
-  total: 100,
-  ready: 100,
-}];
-class List extends React.Component {
-  renderItem(proj: ProjectInfo) {
-    return (
-      <div className={`proj ${proj.ready === proj.total ? 'complete' : ''}`} key={proj.id}>
-        <p className="title">
-          <span className="name">{proj.name}</span>
-          <span className="stat">{proj.ready} / {proj.total}</span>
-        </p>
-        <p className="info">{proj.last_update}</p>
-      </div>
-    );
+interface ListState {
+  createVisible: boolean;
+}
+
+class ProjectList extends React.Component<ListProps, ListState> {
+  renderItem(proj?: Immutable.Map<string, any>) {
+    if (proj) {
+      let _proj = proj.toJS();
+      return (
+        <div
+          onClick={() => this.props.loadProject(_proj._id)}
+          className={`proj ${this.props.active ? (_proj._id === this.props.active._id ? 'complete' : '') : '' }`}
+          key={_proj._id}
+        >
+          <p className="title">
+            <span className="name">{_proj.name}</span>
+            {/* <span className="stat">{proj.ready} / {proj.total}</span> */}
+          </p>
+          <p className="info">{_proj.update_date}</p>
+        </div>
+      );
+    }
+    return;
   }
   
   search(value: string) {
@@ -60,14 +61,38 @@ class List extends React.Component {
             <button className="filtBtn active">全部</button>
             <button className="filtBtn">未完成</button>
           </div>
-          <button className="filtBtn newBtn">+</button>
+          <button className="filtBtn refresh"><Icon type="reload" /></button>
+          <button className="filtBtn newBtn" onClick={() => this.props.showCreate()}>+</button>
         </div>
-        {
-          projects.map(v => this.renderItem(v))
-        }
+        <div className={`u-create ${this.props.createVisible ? 'active' : ''}`}>
+          <CreateForm />
+        </div>
+        <div className="projList">
+          {
+            this.props.list ? (
+              this.props.list.map(v => this.renderItem(v))
+            ) : null
+          }
+          <div className="projectNull">
+            <p className="empty" onClick={() => this.props.showCreate()}>您还没有项目，新建一个吧</p>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default List;
+export default connect(
+  // tslint:disable-next-line:no-empty
+  (state: Immutable.Map<String, any>) => {
+    return {
+      list: state.getIn(['project', 'list']),
+      active: state.getIn(['project', 'activeProj']),
+      createVisible: state.getIn(['project', 'createVisible']),
+    };
+  },
+  {
+    showCreate: project.showCreate,
+    loadProject: project.load_project,
+  }
+)(ProjectList);

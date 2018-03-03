@@ -15,7 +15,8 @@
       padding: 0 20px 0 0;
       color: #3eaaaf;
       text-transform: uppercase;
-      letter-spacing: 2px; }
+      letter-spacing: 2px;
+      flex-shrink: 0; }
     .p-index .header .nav {
       width: 100%; }
     .p-index .header .link {

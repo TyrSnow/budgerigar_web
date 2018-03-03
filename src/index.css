@@ -10,6 +10,12 @@ body {
   position: fixed;
   top: 0; }
 
+.empty {
+  color: #666;
+  cursor: pointer; }
+  .empty:hover {
+    color: #3eaaaf; }
+
 .ant-btn-primary {
   background-color: #3eaaaf;
   border-color: #3eaaaf; }

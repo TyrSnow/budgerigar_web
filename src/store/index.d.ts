@@ -1,4 +1,5 @@
 import { Store } from 'redux';
+import * as Immutable from 'immutable';
 import { ProjectListInfo } from '../definition/project';
 import { Pager } from '../definition/common';
 
@@ -16,7 +17,7 @@ export interface AppState {
   auth: Map<String, AuthState>
 }
 
-export interface AppStore extends Store<Map<String, AppState>> {
+export interface AppStore extends Immutable.Map<String, AppState> {
 
 }
 

@@ -12,6 +12,13 @@ body {
   top: 0;
 }
 
+.empty {
+  color: #666;
+  cursor: pointer;
+  &:hover {
+    color: #3eaaaf;
+  }
+}
 .ant-btn-primary {
   background-color: #3eaaaf;
   border-color: #3eaaaf;
