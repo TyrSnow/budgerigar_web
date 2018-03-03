@@ -13,11 +13,13 @@ class SettingTab extends React.Component {
             <p className="setting">
               <span className="key">app_key</span>
               <span className="value">auiewrhfsdfgqawex87123easdfq2aDF2Q439R</span>
+              <Icon className="editBtn" type="copy" />
               <Icon className="editBtn" type="reload" />
             </p>
             <p className="setting">
               <span className="key">secret_key</span>
               <span className="value">asd2380xcnj2380zdfghjq43</span>
+              <Icon className="editBtn" type="copy" />
               <Icon className="editBtn" type="reload" />
             </p>
           </div>

@@ -4,6 +4,10 @@ import List from './list';
 import './index.css';
 
 class Project extends React.Component {
+  componentWillMount() {
+    // 加载项目列表
+  }
+
   render() {
     return (
       <div className="m-project">

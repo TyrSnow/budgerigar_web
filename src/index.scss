@@ -65,3 +65,9 @@ a:active {
 a:hover {
   color: #7fb1b3;
 }
+.ant-anchor-link-active > .ant-anchor-link-title {
+  color: #3eaaaf;
+}
+.ant-anchor-ink-ball {
+  border: 2px solid #3eaaaf;
+}
