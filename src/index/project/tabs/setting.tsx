@@ -33,16 +33,15 @@ class SettingTab extends React.Component<SettingTabProps> {
           <h4 className="title">基本配置</h4>
           <div className="inner">
             <p className="setting">
-              <span className="key">app_key</span>
-              <span className="value">auiewrhfsdfgqawex87123easdfq2aDF2Q439R</span>
+              <span className="key">项目名</span>
+              <span className="value">{this.props.activeProj.name}</span>
               <Icon className="editBtn" type="copy" />
-              <Icon className="editBtn" type="reload" />
             </p>
             <p className="setting">
-              <span className="key">secret_key</span>
+              <span className="key">共享码</span>
               <span className="value">asd2380xcnj2380zdfghjq43</span>
+              <Icon className="editBtn" type="refresh" />
               <Icon className="editBtn" type="copy" />
-              <Icon className="editBtn" type="reload" />
             </p>
           </div>
         </div>
@@ -56,6 +55,23 @@ class SettingTab extends React.Component<SettingTabProps> {
           <h4 className="title">功能</h4>
           <div className="inner">
             <p>配置在线访问语言包功能的开启</p>
+          </div>
+        </div>
+        <div className="wrapper">
+          <h4 className="title">API调用</h4>
+          <div className="inner">
+            <p className="setting">
+              <span className="key">app_key</span>
+              <span className="value">auiewrhfsdfgqawex87123easdfq2aDF2Q439R</span>
+              <Icon className="editBtn" type="copy" />
+              <Icon className="editBtn" type="reload" />
+            </p>
+            <p className="setting">
+              <span className="key">secret_key</span>
+              <span className="value">asd2380xcnj2380zdfghjq43</span>
+              <Icon className="editBtn" type="copy" />
+              <Icon className="editBtn" type="reload" />
+            </p>
           </div>
         </div>
         <div className="wrapper">

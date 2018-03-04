@@ -74,6 +74,8 @@
   .m-project .m-projDetail {
     width: 100%;
     padding: 30px 50px; }
+    .m-project .m-projDetail.empty {
+      color: #3eaaaf; }
     .m-project .m-projDetail > .ant-tabs {
       height: 100%;
       padding-bottom: 60px; }
@@ -129,6 +131,8 @@
         text-align: right; }
         .m-project .m-tabPane .wrapper .setting .key:after {
           content: ':'; }
+        .m-project .m-tabPane .wrapper .setting .key .anticon {
+          margin: 0 5px; }
       .m-project .m-tabPane .wrapper .setting .value {
         width: 100%;
         display: inline-block; }

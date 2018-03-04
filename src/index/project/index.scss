@@ -92,7 +92,7 @@
     width: 100%;
     padding: 30px 50px;
     &.empty {
-      
+      color: #3eaaaf;
     }
     > .ant-tabs {
       height: 100%;
@@ -166,6 +166,9 @@
           text-align: right;
           &:after {
             content: ':';
+          }
+          .anticon{
+            margin: 0 5px;
           }
         }
         .value {

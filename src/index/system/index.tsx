@@ -12,7 +12,7 @@ class System extends React.Component {
     return (
       <div className="m-setting">
         <Tabs tabPosition="left">
-          <TabPane tab="统计" key="3">
+          <TabPane tab="统计" key="1">
             <div className="m-settingPane">
               <div className="wrapper">
                 <div className="inner">
@@ -38,7 +38,7 @@ class System extends React.Component {
               </div>
             </div>
           </TabPane>
-          <TabPane tab="限额" key="1">
+          <TabPane tab="限额" key="2">
             <div className="m-settingPane">
               <div className="wrapper">
                 <h4 className="title">用户</h4>
@@ -92,7 +92,7 @@ class System extends React.Component {
               </div>
             </div>
           </TabPane>
-          <TabPane tab="素材管理" key="3">
+          <TabPane tab="素材管理" key="4">
             <div className="m-settingPane">
               <div className="wrapper">
                 <h4 className="title">语言配置</h4>
@@ -100,6 +100,18 @@ class System extends React.Component {
                   <p className="setting">设置国家名，语言代码，国旗，同一个国家可以有多个语言</p>
                 </div>
               </div>
+              <div className="wrapper">
+                <h4 className="title">头像</h4>
+                <div className="inner">
+                  <p className="setting">允许用户设置的头像，只能添加不能删除</p>
+                </div>
+              </div>
+            </div>
+          </TabPane>
+          <TabPane tab="字典管理" key="4">
+            <div className="m-settingPane">
+              <p>方便未来扩展使用</p>
+              <p>思考把头像当成一种特殊的字典来处理</p>
             </div>
           </TabPane>
         </Tabs>
