@@ -19,6 +19,13 @@ body {
     color: #3eaaaf;
   }
 }
+.btnIcon {
+  cursor: pointer;
+  padding: 0 7px;
+  &:hover {
+    color: #3eaaaf;
+  }
+}
 .ant-btn-primary {
   background-color: #3eaaaf;
   border-color: #3eaaaf;
@@ -77,4 +84,9 @@ a:hover {
 }
 .ant-anchor-ink-ball {
   border: 2px solid #3eaaaf;
+}
+
+.ant-btn-ghost:hover, .ant-btn-ghost:focus {
+  color: #3eaaaf;
+  border-color: #3eaaaf;
 }

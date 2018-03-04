@@ -1,6 +1,9 @@
 import * as React from 'react';
 import {
   Tabs,
+  Icon,
+  Button,
+  Input,
 } from 'antd';
 import './index.css';
 
@@ -16,20 +19,53 @@ class Setting extends React.Component {
               <div className="wrapper">
                 <h4 className="title">基本信息</h4>
                 <div className="inner">
-                  <p className="setting">用户名</p>
-                  <p className="setting">头像</p>
-                  <p className="setting">邮箱</p>
-                  <p className="setting">手机号</p>
-                  <p className="setting">用户名</p>
+                  <p className="setting">
+                    <span className="key">头像</span>
+                    <span className="value">tianyu</span>
+                    <span className="edit"><Icon className="btnIcon" type="edit" /></span>
+                  </p>
+                  <p className="setting">
+                    <span className="key">用户名</span>
+                    <span className="value">tianyu</span>
+                    <span className="edit"><Icon className="btnIcon" type="edit" /></span>
+                  </p>
+                  <p className="setting">
+                    <span className="key">邮箱</span>
+                    <span className="value">-</span>
+                    <span className="edit"><Icon className="btnIcon" type="edit" /></span>
+                  </p>
+                  <p className="setting">
+                    <span className="key">手机号</span>
+                    <span className="value">-</span>
+                    <span className="edit"><Icon className="btnIcon" type="edit" /></span>
+                  </p>
                 </div>
               </div>
               <div className="wrapper">
                 <h4 className="title">修改密码</h4>
                 <div className="inner">
-                  <p className="setting">旧密码</p>
-                  <p className="setting">新密码</p>
-                  <p className="setting">确认新密码</p>
-                  <p className="setting">保存</p>
+                  <p className="setting">
+                    <span className="key">旧密码</span>
+                    <span className="value">
+                      <Input type="password" placeholder="请输入旧密码" />
+                    </span>
+                  </p>
+                  <p className="setting">
+                    <span className="key">新密码</span>
+                    <span className="value">
+                      <Input type="password" placeholder="请输入新密码" />
+                    </span>
+                  </p>
+                  <p className="setting">
+                    <span className="key">确认新密码</span>
+                    <span className="value">
+                      <Input type="password" placeholder="请再次输入新密码" />
+                    </span>
+                  </p>
+                  <p className="control">
+                    <Button type="primary" style={{ marginRight: '10px' }}>保存</Button>
+                    <Button type="ghost">重置</Button>
+                  </p>
                 </div>
               </div>
             </div>

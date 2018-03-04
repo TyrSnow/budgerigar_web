@@ -6,7 +6,6 @@ const initialState = Immutable.Map({
 });
 
 export default (state = initialState, action: ProjectAction) => {
-  console.debug(action);
   switch (action.type) {
 
     case TYPES.UPDATE_PROJECT_LIST:
@@ -37,6 +36,7 @@ export default (state = initialState, action: ProjectAction) => {
 
     case TYPES.HIDE_CREATE:
       return state.set('createVisible', false);
+
     default:
       return state;
   }

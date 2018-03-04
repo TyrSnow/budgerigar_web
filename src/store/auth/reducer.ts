@@ -11,10 +11,11 @@ const initialState = Immutable.Map({
 });
 
 export default (state = initialState, action: AuthAction) => {
-  console.debug(action);
   switch (action.type) {
+
     case TYPES.CLEAR_AUTH:
       return initialState;
+
     case TYPES.UPDATE_USER:
       // 更新下拦截器
       axios.interceptors.request.use(
@@ -33,6 +34,7 @@ export default (state = initialState, action: AuthAction) => {
         },
         action.user
       )));
+      
     default:
       return state;
   }

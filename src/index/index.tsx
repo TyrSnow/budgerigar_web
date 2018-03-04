@@ -10,6 +10,7 @@ import Project from './project/index';
 import Help from './help/index';
 import Setting from './setting/index';
 import System from './system/index';
+import { AdminRoute } from '../shared/authRoute';
 
 interface IndexProps {
   isLogIn: boolean;
@@ -24,7 +25,7 @@ class Index extends React.Component<IndexProps> {
           this.props.isLogIn ? (
             <div className="container">
               <Switch>
-                <Route path="/system" component={System} />
+                <AdminRoute path="/system" component={System} />
                 <Route path="/setting" component={Setting} />
                 <Route path="/help" component={Help} />
                 <Route path="/" component={Project} />
