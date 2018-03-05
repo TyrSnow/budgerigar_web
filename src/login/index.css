@@ -2,7 +2,7 @@
   background: url(/images/background/login.jpg); }
 
 .p-login .inner {
-  width: 300px;
+  width: 350px;
   background: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
   margin: 100px auto;
@@ -18,3 +18,14 @@
 
 .p-login .login-form .login-form-button {
   width: 100%; }
+
+.p-protocal {
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.7); }
+  .p-protocal .inner {
+    width: 400px;
+    background: #FFF; }
+  .p-protocal .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }

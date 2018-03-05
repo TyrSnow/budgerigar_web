@@ -4,14 +4,28 @@ import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 import { FormComponentProps } from 'antd/lib/form/Form';
 import { auth } from '../../store/actions';
 import history from '../../shared/history';
+import Protocal from './protocal';
 
 const FormItem = Form.Item;
+
+interface RegistState {
+  protocalVisible: boolean;
+  agree: boolean;
+}
 
 interface RegistProps {
   regist: any;
 }
 
-class RegistForm extends React.Component<RegistProps & FormComponentProps> {
+class RegistForm extends React.Component<RegistProps & FormComponentProps, RegistState> {
+  constructor(props: RegistProps & FormComponentProps) {
+    super(props);
+    this.state = {
+      protocalVisible: false,
+      agree: false
+    };
+  }
+
   regist() {
     this.props.form.validateFields((errors, fields) => {
       if (!errors) {
@@ -89,12 +103,27 @@ class RegistForm extends React.Component<RegistProps & FormComponentProps> {
         }
         </FormItem>
         <FormItem>
-          <Checkbox>我已阅读并同意</Checkbox>
-          <a className="login-form-forgot" href="/protocal" target="__blank">用户许可协议</a>
-          <Button onClick={() => this.regist()} type="primary" htmlType="submit" className="login-form-button">
+          <Checkbox
+            onChange={() => this.setState({protocalVisible: true})}
+            checked={this.state.agree}
+          >
+            我已阅读并同意<span style={{ color: '#3eaaaf'}}>《用户许可协议》</span>
+          </Checkbox>
+          <Button
+            disabled={!this.state.agree}
+            onClick={() => this.regist()}
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+          >
             注册
           </Button>
         </FormItem>
+        <Protocal
+          onConfirm={() => this.setState({ protocalVisible: false, agree: true})}
+          onCancel={() => this.setState({ protocalVisible: false, agree: false})}
+          visible={this.state.protocalVisible}
+        />
       </Form>
     );
   }
