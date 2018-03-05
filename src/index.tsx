@@ -26,6 +26,9 @@ axios.interceptors.response.use(
           store.dispatch(auth.clearAuth());
           history.push('login');
           break;
+        case 500:
+          history.push('500');
+          break;
         default:
       }
     }

@@ -1,37 +1,30 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { message } from 'antd';
-import { project } from '../../store/actions';
-import Detail from './detail';
-import List from './list';
-import './index.css';
 
-interface ProjectProps {
-  loadList: any;
+interface LoadableIndexState {
+  Page?: any;
 }
-
-class Project extends React.Component<ProjectProps> {
+export default class LoadableIndex extends React.Component<any, LoadableIndexState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {};
+  }
   componentWillMount() {
-    // 加载项目列表
-    this.props.loadList().catch(
-      (err: Error) => message.error(err.message),
+    import('./page').then(
+      (Page) => {
+        this.setState({
+          Page: Page.default,
+        });
+      }
     );
   }
-
   render() {
-    return (
-      <div className="m-project">
-        <List />
-        <Detail />
-      </div>
-    );
+    let { Page } = this.state;
+    if (Page) {
+      return <Page />;
+    } else {
+      return (
+        <div className="p-loading">加载中</div>
+      );
+    }
   }
 }
-
-export default connect(
-  // tslint:disable-next-line:no-empty
-  state => {},
-  {
-    loadList: project.load_list,
-  }
-)(Project);

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Router, Switch, Route } from 'react-router';
 import { Provider } from 'react-redux';
 
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 
 import history from './shared/history';
 import store from './store';
