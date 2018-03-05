@@ -1,31 +1,30 @@
 import * as React from 'react';
-import {
-  Tabs,
-} from 'antd';
-import './index.css';
 
-import LoginForm from './components/loginForm';
-import RegistForm from './components/registForm';
-
-const TabPane = Tabs.TabPane;
-
-class Login extends React.Component {
-  render() {
-    return (
-      <div className="page p-login">
-        <div className="inner">
-          <Tabs>
-            <TabPane tab="登陆" key="login">
-              <LoginForm />
-            </TabPane>
-            <TabPane tab="注册" key="regist">
-              <RegistForm />
-            </TabPane>
-          </Tabs>
-        </div>
-      </div>
+interface LoadableState {
+  Page?: any;
+}
+export default class LoadableLogin extends React.Component<any, LoadableState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {};
+  }
+  componentWillMount() {
+    import('./page').then(
+      (Page) => {
+        this.setState({
+          Page: Page.default,
+        });
+      }
     );
   }
+  render() {
+    let { Page } = this.state;
+    if (Page) {
+      return <Page />;
+    } else {
+      return (
+        <div className="p-loading">加载中</div>
+      );
+    }
+  }
 }
-
-export default Login;

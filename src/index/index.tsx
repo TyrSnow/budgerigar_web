@@ -1,48 +1,30 @@
 import * as React from 'react';
-import { Switch, Route } from 'react-router';
-import { connect } from 'react-redux';
-import * as Immutable from 'immutable';
 
-import './index.css';
-
-import Top from './ui/top';
-import Project from './project/index';
-import Help from './help/index';
-import Setting from './setting/index';
-import System from './system/index';
-import { AdminRoute } from '../shared/authRoute';
-
-interface IndexProps {
-  isLogIn: boolean;
+interface LoadableIndexState {
+  Page?: any;
 }
-
-class Index extends React.Component<IndexProps> {
-  render() {
-    return (
-      <div className="page p-index">
-        <Top />
-        {
-          this.props.isLogIn ? (
-            <div className="container">
-              <Switch>
-                <AdminRoute path="/system" component={System} />
-                <Route path="/setting" component={Setting} />
-                <Route path="/help" component={Help} />
-                <Route path="/" component={Project} />
-              </Switch>
-            </div>
-          ) : null
-        }
-      </div>
+export default class LoadableIndex extends React.Component<any, LoadableIndexState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {};
+  }
+  componentWillMount() {
+    import('./page').then(
+      (Page) => {
+        this.setState({
+          Page: Page.default,
+        });
+      }
     );
   }
+  render() {
+    let { Page } = this.state;
+    if (Page) {
+      return <Page />;
+    } else {
+      return (
+        <div className="p-loading">加载中</div>
+      );
+    }
+  }
 }
-
-export default connect(
-  (state: Immutable.Map<String, any>) => {
-    return {
-      isLogIn: state.getIn(['auth', 'isLogIn']),
-    };
-  },
-  {}
-)(Index);
