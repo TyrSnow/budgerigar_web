@@ -14,6 +14,10 @@ install:
   - npm i npminstall && npminstall
 script:
   - npm run build
+after_script:
+  - tar -zcvf budgerigar.tar.gz build/*
+  - sshpass -p $DEPLOY_SEVER_PASSWORD scp -o StrictHostKeyChecking=no budgerigar.tar.gz $DEPLOY_SERVER_USER@$DEPLOY_SEVER_IP:~
+  - sshpass -p $DEPLOY_SEVER_PASSWORD ssh $DEPLOY_SERVER_USER@$DEPLOY_SEVER_IP -o StrictHostKeyChecking=no "tar -zxvf budgerigar.tar.gz -C budgerigar/"
 branches:
   only:
   - master
