@@ -1,3 +1,7 @@
+stages:
+  - build
+  - deploy
+
 sudo: true
 language: node_js
 node_js:
@@ -8,16 +12,33 @@ addons:
     packages:
       - sshpass
       - xvfb
-install:
-  - export DISPLAY=':99.0'
-  - Xvfb :99 -screen 0 1366x768x24 > /dev/null 2>&1 &
-  - npm i npminstall && npminstall
-script:
-  - npm run build
-after_script:
-  - tar -zcvf budgerigar.tar.gz --exclude=*.map build/*
-  - sshpass -p $DEPLOY_SEVER_PASSWORD scp -o StrictHostKeyChecking=no budgerigar.tar.gz $DEPLOY_SERVER_USER@$DEPLOY_SEVER_IP:~
-  - sshpass -p $DEPLOY_SEVER_PASSWORD ssh $DEPLOY_SERVER_USER@$DEPLOY_SEVER_IP -o StrictHostKeyChecking=no "tar -zxvf budgerigar.tar.gz -C budgerigar/"
-branches:
-  only:
-  - master
+
+package_project:
+  stage: build
+  install:
+    - export DISPLAY=':99.0'
+    - Xvfb :99 -screen 0 1366x768x24 > /dev/null 2>&1 &
+    - npm i npminstall && npminstall
+  script:
+    - npm run build
+
+deploy_uat_project:
+  after_script:
+    - tar -zcvf budgerigar.tar.gz --exclude=*.map build/*
+    - sshpass -p $DEPLOY_UAT_PASSWORD scp -o StrictHostKeyChecking=no budgerigar.tar.gz $DEPLOY_UAT_USER@$DEPLOY_UAT_IP:~
+    - sshpass -p $DEPLOY_UAT_PASSWORD ssh $DEPLOY_UAT_USER@$DEPLOY_UAT_IP -o StrictHostKeyChecking=no "tar -zxvf budgerigar.tar.gz -C budgerigar/"
+  branches:
+    only:
+    - develop
+
+deploy_pro_project:
+  after_script:
+    - tar -zcvf budgerigar.tar.gz --exclude=*.map build/*
+    - sshpass -p $DEPLOY_SEVER_PASSWORD scp -o StrictHostKeyChecking=no budgerigar.tar.gz $DEPLOY_SERVER_USER@$DEPLOY_SEVER_IP:~
+    - sshpass -p $DEPLOY_SEVER_PASSWORD ssh $DEPLOY_SERVER_USER@$DEPLOY_SEVER_IP -o StrictHostKeyChecking=no "tar -zxvf budgerigar.tar.gz -C budgerigar/"
+  branches:
+    only:
+    - master
+
+
+
