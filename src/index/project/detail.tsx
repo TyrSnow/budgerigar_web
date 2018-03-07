@@ -45,7 +45,7 @@ class Detail extends React.Component<ListProps> {
           <TabPane tab="关键词" key="keyword">
             <KeywordTab />
           </TabPane>
-          <TabPane tab="导出" key="output">
+          <TabPane tab="语言包" key="output">
             <OutputTab />
           </TabPane>
           <TabPane tab="成员" key="member">

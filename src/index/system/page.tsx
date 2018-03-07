@@ -55,12 +55,12 @@ class System extends React.Component {
                   </p>
                   <p className="setting">
                     <span className="key">项目关键字数</span>
-                    <span className="value">200</span>
+                    <span className="value">50</span>
                     <span className="edit"><Icon className="btnIcon" type="edit" /></span>
                   </p>
                   <p className="setting">
                     <span className="key">项目输出模板</span>
-                    <span className="value">5</span>
+                    <span className="value">10</span>
                     <span className="edit"><Icon className="btnIcon" type="edit" /></span>
                   </p>
                 </div>

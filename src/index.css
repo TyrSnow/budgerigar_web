@@ -11,6 +11,21 @@ body {
   left: 0;
   top: 0; }
 
+.forkLink {
+  position: fixed;
+  right: -44px;
+  top: 34px;
+  z-index: 1000;
+  background: #3eaaaf;
+  color: #FFF;
+  display: block;
+  width: 200px;
+  text-align: center;
+  line-height: 3;
+  transform: rotate(45deg); }
+  .forkLink:hover {
+    color: #EEE; }
+
 .empty {
   color: #666;
   cursor: pointer; }

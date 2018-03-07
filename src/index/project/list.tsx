@@ -21,6 +21,9 @@ interface ListState {
   createVisible: boolean;
 }
 
+/**
+ * 1、图标上区分自己的身份：创建人-管理员-成员
+ */
 class ProjectList extends React.Component<ListProps, ListState> {
   renderItem(proj?: Immutable.Map<string, any>) {
     if (proj) {

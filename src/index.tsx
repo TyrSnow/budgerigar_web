@@ -38,6 +38,17 @@ axios.interceptors.response.use(
 
 /** 引入start */
 ReactDOM.render(
-  <App />,
+  (
+    <div>
+      <App />
+      <a
+        href="https://github.com/TyrSnow/budgerigar_api"
+        target="_blank"
+        className="forkLink"
+      >
+        Fork me on github.
+      </a>
+    </div>
+  ),
   document.getElementById('root') as HTMLElement
 );

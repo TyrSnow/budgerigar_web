@@ -11,7 +11,9 @@ interface CreateFormProps {
   createProject: any;
   hideCreate: any;
 }
-
+/**
+ * 1、允许输入项目的分享码来加入一个现存的项目
+ */
 class CreateForm extends React.Component<CreateFormProps & FormComponentProps> {
   createProject() {
     this.props.form.validateFields((errors, fields) => {
