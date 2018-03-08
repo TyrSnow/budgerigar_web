@@ -5,6 +5,7 @@ import {
   Icon,
   Tabs,
   Spin,
+  Tooltip,
 } from 'antd';
 // import { ProjectListInfo } from '../../definition/project';
 
@@ -33,8 +34,12 @@ class Detail extends React.Component<ListProps> {
         <div className="title">
           <span className="name">{this.props.activeProj.name}</span>
           <span className="flags">
-            <img className="flag" src="/images/dev/cn.jpg" alt="中文" />
-            <img className="flag" src="/images/dev/cn.jpg" alt="中文" />
+            <Tooltip placement="top" title="简体中文">
+              <img className="flag" src="/images/dev/cn.jpg" alt="简体中文" />
+            </Tooltip>
+            <Tooltip placement="top" title="繁体中文">
+              <img className="flag" src="/images/dev/cn.jpg" alt="繁体中文" />
+            </Tooltip>
           </span>
           <Icon type="setting" />
         </div>

@@ -71,6 +71,12 @@
         cursor: pointer; }
         .m-project .m-projList .u-create .anticon-close {
           background: #F00; }
+  .m-project .flags {
+    font-size: 12px; }
+    .m-project .flags .flag {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px; }
   .m-project .m-projDetail {
     width: 100%;
     padding: 30px 50px; }
@@ -84,14 +90,10 @@
       line-height: 2;
       border-bottom: 2px solid #EEE;
       margin-bottom: 10px; }
+      .m-project .m-projDetail .title .name {
+        margin-right: 10px; }
       .m-project .m-projDetail .title .anticon {
         float: right; }
-      .m-project .m-projDetail .title .flags {
-        font-size: 12px; }
-        .m-project .m-projDetail .title .flags .flag {
-          width: 20px;
-          height: 20px;
-          margin-left: 10px; }
   .m-project .m-translateTab .search {
     padding: 20px 40px; }
   .m-project .m-translateTab .filters {

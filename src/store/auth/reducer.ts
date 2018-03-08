@@ -6,7 +6,7 @@ import { AuthAction } from './action.d';
 const initialState = Immutable.Map({
   isLogIn: false,
   token: undefined,
-  user: '',
+  name: '',
   head: '',
 });
 

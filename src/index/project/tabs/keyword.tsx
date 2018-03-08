@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import * as Immutable from 'immutable';
 import {
   Table,
   Input,
@@ -27,6 +29,9 @@ interface Column {
   dataIndex?: string;
   render?: any;
 }
+interface KeywordTabProps {
+  activeProj: any;
+}
 /**
  * 1、每个项目最多50个关键词（可以配置）
  * 1、录入关键词
@@ -35,8 +40,9 @@ interface Column {
  * 4、禁用某个关键词
  * 5、启用某个关键词
  */
-class KeywordTab extends React.Component {
+class KeywordTab extends React.Component<KeywordTabProps> {
   render() {
+    console.debug(this.props.activeProj);
     const columns: Array<Column> = [{
       title: '关键词',
       dataIndex: 'text',
@@ -66,4 +72,13 @@ class KeywordTab extends React.Component {
   }
 }
 
-export default KeywordTab;
+export default connect(
+  (state: Immutable.Map<String, any>) => {
+    return {
+      activeProj: state.getIn(['project', 'activeProj']),
+    };
+  },
+  {
+
+  }
+)(KeywordTab);

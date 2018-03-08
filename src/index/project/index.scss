@@ -88,6 +88,14 @@
       }
     }
   }
+  .flags {
+    font-size: 12px;
+    .flag {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+  }
   .m-projDetail {
     width: 100%;
     padding: 30px 50px;
@@ -103,16 +111,11 @@
       line-height: 2;
       border-bottom: 2px solid #EEE;
       margin-bottom: 10px;
+      .name {
+        margin-right: 10px;
+      }
       .anticon {
         float: right;
-      }
-      .flags {
-        font-size: 12px;
-        .flag {
-          width: 20px;
-          height: 20px;
-          margin-left: 10px;
-        }
       }
     }
   }
