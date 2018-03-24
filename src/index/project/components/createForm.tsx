@@ -63,7 +63,7 @@ class CreateForm extends React.Component<CreateFormProps & FormComponentProps> {
 
 export default connect(
   // tslint:disable-next-line:no-empty
-  (state, getState) => { },
+  (state, getState) => ({ }),
   {
     createProject: project.create,
     hideCreate: project.hideCreate,

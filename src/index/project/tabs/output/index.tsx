@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   Collapse,
+  Button,
 } from 'antd';
 
 const Panel = Collapse.Panel;
@@ -26,10 +27,10 @@ class OutputTab extends React.Component {
   render() {
     return (
       <div className="m-tabPane m-outputTab">
+        <div className="u-controls">
+          <Button type="primary">新建</Button>
+        </div>
         <Collapse accordion={true}>
-          <Panel className="create" header="新建语言包" key="0">
-            <p>{text}</p>
-          </Panel>
           <Panel header="This is panel header 1" key="1">
             <p>{text}</p>
           </Panel>

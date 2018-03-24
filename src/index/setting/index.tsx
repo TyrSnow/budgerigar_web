@@ -9,6 +9,7 @@ export default class Loadable extends React.Component<any, LoadableState> {
     this.state = {};
   }
   componentWillMount() {
+    console.debug('Setting will mount', this.props);
     import('./page').then(
       (Page) => {
         this.setState({

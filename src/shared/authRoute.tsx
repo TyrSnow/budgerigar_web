@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as Immutable from 'immutable';
-import AUTH_TYPE from '../constant/authType';
+import { AUTH_TYPE } from '../constant/authType';
 
 interface AuthProps {
   auth: AUTH_TYPE;

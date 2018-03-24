@@ -1,6 +1,10 @@
-enum AUTH_TYPE {
+export enum AUTH_TYPE {
   USER = 0,
   ADMIN,
   ROOT
 }
-export default AUTH_TYPE;
+export const AUTH_TYPE_MAP = {
+  [AUTH_TYPE.USER]: '用户',
+  [AUTH_TYPE.ADMIN]: '管理员',
+  [AUTH_TYPE.ROOT]: '超级管理员',
+};

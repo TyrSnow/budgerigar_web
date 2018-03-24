@@ -4,6 +4,8 @@ import {
   Icon,
 } from 'antd';
 import './index.css';
+import Resource from './components/resource';
+import UserManage from './components/userManage';
 
 const { TabPane } = Tabs;
 
@@ -83,32 +85,12 @@ class System extends React.Component {
             </div>
           </TabPane>
           <TabPane tab="用户管理" key="3">
-            <div className="m-settingPane">
-              <div className="wrapper">
-                <h4 className="title">用户列表</h4>
-                <div className="inner">
-                  <p className="setting">用列表显示，可以将用户加入黑名单，或者设为系统管理员（需要Root权限）</p>
-                </div>
-              </div>
-            </div>
+            <UserManage />
           </TabPane>
           <TabPane tab="素材管理" key="4">
-            <div className="m-settingPane">
-              <div className="wrapper">
-                <h4 className="title">语言配置</h4>
-                <div className="inner">
-                  <p className="setting">设置国家名，语言代码，国旗，同一个国家可以有多个语言</p>
-                </div>
-              </div>
-              <div className="wrapper">
-                <h4 className="title">头像</h4>
-                <div className="inner">
-                  <p className="setting">允许用户设置的头像，只能添加不能删除</p>
-                </div>
-              </div>
-            </div>
+            <Resource />
           </TabPane>
-          <TabPane tab="字典管理" key="4">
+          <TabPane tab="字典管理" key="5">
             <div className="m-settingPane">
               <p>方便未来扩展使用</p>
               <p>思考把头像当成一种特殊的字典来处理</p>

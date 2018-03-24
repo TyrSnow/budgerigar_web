@@ -18,6 +18,7 @@ interface IndexProps {
 
 class Index extends React.Component<IndexProps> {
   render() {
+    console.debug('Index Page render:', this.props);
     return (
       <div className="page p-index">
         <Top />

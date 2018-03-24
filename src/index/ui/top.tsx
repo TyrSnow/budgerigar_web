@@ -8,7 +8,7 @@ import {
   Dropdown,
   Icon,
 } from 'antd';
-import AUTH_TYPE from '../../constant/authType';
+import { AUTH_TYPE } from '../../constant/authType';
 import history from '../../shared/history';
 import { auth } from '../../store/actions';
 

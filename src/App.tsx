@@ -10,7 +10,6 @@ import { auth } from './store/actions';
 
 import Index from './index/index';
 import Login from './login/index';
-// import Protocal from './pages/protocal';
 
 class App extends React.Component {
   componentWillMount() {
@@ -19,6 +18,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.debug('App will render: ', this.props);
     return (
       <Provider store={store}>
         <Router history={history}>

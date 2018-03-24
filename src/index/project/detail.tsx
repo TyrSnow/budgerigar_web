@@ -13,7 +13,7 @@ import TranslateTab from './tabs/translate';
 import SettingTab from './tabs/setting';
 import KeywordTab from './tabs/keyword';
 import MemberTab from './tabs/member';
-import OutputTab from './tabs/output';
+import OutputTab from './tabs/output/index';
 
 const { TabPane } = Tabs;
 

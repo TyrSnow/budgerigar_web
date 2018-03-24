@@ -96,13 +96,11 @@ class ProjectList extends React.Component<ListProps, ListState> {
 
 export default connect(
   // tslint:disable-next-line:no-empty
-  (state: Immutable.Map<String, any>) => {
-    return {
-      list: state.getIn(['project', 'list']),
-      active: state.getIn(['project', 'activeProj']),
-      createVisible: state.getIn(['project', 'createVisible']),
-    };
-  },
+  (state: Immutable.Map<String, any>) => ({
+    list: state.getIn(['project', 'list']),
+    active: state.getIn(['project', 'activeProj']),
+    createVisible: state.getIn(['project', 'createVisible']),
+  }),
   {
     showCreate: project.showCreate,
     loadProject: project.load_project,

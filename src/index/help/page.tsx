@@ -7,7 +7,7 @@ const { Link } = Anchor;
 class Project extends React.Component {
   render() {
     return (
-      <div className="m-help">
+      <div className="m-help m-container">
         <div className="content">
           <h4 className="title">说明书</h4>
           <p className="setence">此处用项目readme渲染出来</p>

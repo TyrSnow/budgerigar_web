@@ -30,7 +30,7 @@ class Project extends React.Component<ProjectProps> {
 
 export default connect(
   // tslint:disable-next-line:no-empty
-  state => {},
+  state => ({}),
   {
     loadList: project.load_list,
   }
