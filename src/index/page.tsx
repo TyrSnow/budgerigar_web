@@ -14,6 +14,7 @@ import { AdminRoute } from '../shared/authRoute';
 
 interface IndexProps {
   isLogIn: boolean;
+  location: any;
 }
 
 class Index extends React.Component<IndexProps> {
@@ -21,7 +22,7 @@ class Index extends React.Component<IndexProps> {
     console.debug('Index Page render:', this.props);
     return (
       <div className="page p-index">
-        <Top />
+        <Top location={this.props.location} />
         {
           this.props.isLogIn ? (
             <div className="container">

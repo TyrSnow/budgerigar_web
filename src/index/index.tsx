@@ -8,6 +8,7 @@ export default class LoadableIndex extends React.Component<any, LoadableIndexSta
     super(props);
     this.state = {};
   }
+
   componentWillMount() {
     import('./page').then(
       (Page) => {
@@ -17,10 +18,11 @@ export default class LoadableIndex extends React.Component<any, LoadableIndexSta
       }
     );
   }
+
   render() {
     let { Page } = this.state;
     if (Page) {
-      return <Page />;
+      return <Page {...this.props} />;
     } else {
       return (
         <div className="p-loading">加载中</div>

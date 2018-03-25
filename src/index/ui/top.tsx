@@ -16,6 +16,7 @@ interface IndexProps {
   user: string;
   auth: AUTH_TYPE;
   clearAuth: any;
+  location: any;
 }
 
 class Index extends React.Component<IndexProps> {
