@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import * as Immutable from 'immutable';
 import {
-  Icon,
+  // Icon,
   Tabs,
   Spin,
   Tooltip,
@@ -13,7 +13,7 @@ import TranslateTab from './tabs/translate';
 import SettingTab from './tabs/setting';
 import KeywordTab from './tabs/keyword';
 import MemberTab from './tabs/member';
-import OutputTab from './tabs/output/index';
+import OutputTab from './tabs/output';
 
 const { TabPane } = Tabs;
 
@@ -41,7 +41,7 @@ class Detail extends React.Component<ListProps> {
               <img className="flag" src="/images/dev/cn.jpg" alt="繁体中文" />
             </Tooltip>
           </span>
-          <Icon type="setting" />
+          {/* <Icon type="setting" /> */}
         </div>
         <Tabs tabPosition="right">
           <TabPane tab="翻译" key="translate">
@@ -51,10 +51,14 @@ class Detail extends React.Component<ListProps> {
             <KeywordTab />
           </TabPane>
           <TabPane tab="语言包" key="output">
-            <OutputTab />
+            <OutputTab project={this.props.activeProj} />
           </TabPane>
           <TabPane tab="成员" key="member">
-            <MemberTab />
+            <MemberTab
+              members={this.props.activeProj.members}
+              admins={this.props.activeProj.admins}
+              auditMembers={[]}
+            />
           </TabPane>
           <TabPane tab="设置" key="setting">
             <SettingTab />

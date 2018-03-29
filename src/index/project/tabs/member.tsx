@@ -1,43 +1,41 @@
 import * as React from 'react';
 import {
-  Icon,
-  Tooltip,
+  // Icon,
+  // Tooltip,
 } from 'antd';
+import MemberList from './memberList';
+import { Member } from '../../../definition/member';
 
-class MemberTab extends React.Component {
+interface MemberTabProps {
+  admins: Array<Member>;
+  members: Array<Member>;
+  auditMembers: Array<Member>;
+}
+
+class MemberTab extends React.Component<MemberTabProps> {
+  filtOutOnlyMembers() { // 找出只是成员身份的用户
+    let admins = this.props.admins.map(member => member._id);
+    return this.props.members.filter(member => admins.indexOf(member._id));
+  }
+
   render() {
+    console.debug(this.props);
     return (
       <div className="m-tabPane m-memberTab">
         <div className="wrapper">
-          <h4 className="title">邀请加入</h4>
-          <div className="inner">
-            <p className="setting">
-              <span className="key">
-                <Tooltip
-                  placement="topLeft"
-                  title="其他用户需要正确输入项目共享码才能加入项目"
-                >
-                  共享码<Icon type="question-circle" />
-                </Tooltip>
-              </span>
-              <span className="value">asd2380xcnj2380zdfghjq43</span>
-              <Icon className="editBtn" type="refresh" />
-              <Icon className="editBtn" type="copy" />
-            </p>
-            <p className="setting">
-              <span className="key">邀请用户</span>
-              <span className="value">是的方式发</span>
-            </p>
-          </div>
-          <p>复制项目共享码邀请一个用户的加入或者输入用户的分享码来让一个用户进入项目</p>
-        </div>
-        <div className="wrapper">
           <h4 className="title">管理员</h4>
-          <p>显示管理员的头像和名字，创建者会标记出来，并可以将创建者身份转给另外一个人</p>
+          <MemberList members={this.props.admins} />
         </div>
         <div className="wrapper">
           <h4 className="title">成员</h4>
-          <p>显示成员的头像和名字，创建者可以将一名成员提到管理员</p>
+          <MemberList members={this.filtOutOnlyMembers()} />
+        </div>
+        <div className="wrapper">
+          <h4 className="title">申请加入</h4>
+          {
+            
+          }
+          <MemberList members={this.props.auditMembers} />
         </div>
       </div>
     );

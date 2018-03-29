@@ -9,7 +9,7 @@ axios.interceptors.response.use(
     if (response.data.success) {
       return response;
     } else {
-      if (response.data.code === 20001) {
+      if ([20000, 20001].indexOf(response.data.code) !== -1) {
         store.dispatch(auth.clearAuth());
         history.push('login');
       }

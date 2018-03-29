@@ -70,8 +70,8 @@ class ProjectList extends React.Component<ListProps, ListState> {
         </div>
         <div className="u-filter">
           <div className="filters">
-            <button className="filtBtn active">全部</button>
-            <button className="filtBtn">未完成</button>
+            <button className="filtBtn active">我管理的</button>
+            <button className="filtBtn">全部</button>
           </div>
           <button className="filtBtn refresh"><Icon type="reload" /></button>
           <button className="filtBtn newBtn" onClick={() => this.props.showCreate()}>+</button>

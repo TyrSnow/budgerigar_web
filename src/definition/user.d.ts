@@ -3,6 +3,7 @@ export interface UserListInfo {
   name: string
   create_date: string
   auth: number
+  head?: string
   block?: boolean
   block_date?: string
 }
