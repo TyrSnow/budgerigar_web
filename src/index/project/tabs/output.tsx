@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
   Collapse,
   Button,
+  message,
 } from 'antd';
 
 const Panel = Collapse.Panel;
@@ -62,7 +63,12 @@ class OutputTab extends React.Component<OutputTabProps, OutputTabState> {
           loading: false,
         });
       }
-    );
+    ).catch((err) => {
+      message.error(err.message);
+      this.setState({
+        loading: false,
+      });
+    });
   }
 
   render() {

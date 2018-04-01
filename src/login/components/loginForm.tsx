@@ -83,7 +83,7 @@ class LoginForm extends React.Component<LoginProps & FormComponentProps> {
 
 export default connect(
   // tslint:disable-next-line:no-empty
-  (state) => {},
+  state => ({}),
   {
     logIn: auth.logIn,
   }

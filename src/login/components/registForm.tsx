@@ -131,7 +131,7 @@ class RegistForm extends React.Component<RegistProps & FormComponentProps, Regis
 
 export default connect(
   // tslint:disable-next-line:no-empty
-  (state) => {},
+  state => ({}),
   {
     regist: auth.regist,
   }

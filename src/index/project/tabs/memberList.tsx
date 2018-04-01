@@ -7,12 +7,17 @@ interface MemberListProps {
 }
 
 export default class MemberList extends React.Component<MemberListProps> {
+  renderMember(member: Member) {
+    return <MemberListItem key={member._id} {...member} />;
+  }
   render() {
     return (
       <div className="u-members">
-        {this.props.members.map((member) => {
-          return <MemberListItem key={member._id} {...member} />;
-        })}
+        {
+          this.props.members.length > 0 ? this.props.members.map(this.renderMember) : (
+            <p>还没有成员</p>
+          )
+        }
       </div>
     );
   }

@@ -14,7 +14,7 @@ class Login extends React.Component {
     return (
       <div className="page p-login">
         <div className="inner">
-          <Tabs>
+          <Tabs defaultActiveKey="login">
             <TabPane tab="登陆" key="login">
               <LoginForm />
             </TabPane>

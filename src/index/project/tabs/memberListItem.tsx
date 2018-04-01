@@ -8,7 +8,6 @@ export default class MemberListItem extends React.Component<Member> {
 
   render() {
     let { props } = this;
-    console.debug(props);
     return (
       <div className="member">
         <img src={props.head} className="head" />
