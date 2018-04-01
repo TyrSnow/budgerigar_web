@@ -109,4 +109,7 @@ body {
     color: #3eaaaf;
     border-color: #3eaaaf;
   }
+  .ant-form-item.none .ant-form-item-label label:after {
+    content: "";
+}
 }

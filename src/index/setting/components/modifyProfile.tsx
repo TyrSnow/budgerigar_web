@@ -5,10 +5,10 @@ import {
   Form,
   Input,
   Button,
-  Upload,
-  Modal,
 } from 'antd';
 import { FormComponentProps } from 'antd/lib/form/Form';
+
+import dirty from '../../../shared/dirty';
 
 const FormItem = Form.Item;
 
@@ -17,34 +17,55 @@ interface ModifyProfileProps {
   name: string;
 }
 
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 14 },
+    sm: { span: 4 },
+  },
+  wrapperCol: {
+    xs: { span: 14 },
+    sm: { span: 16 },
+  },
+};
+
 class ModifyProfile extends React.Component<ModifyProfileProps & FormComponentProps> {
   state = {
+    dirty: false,
     previewVisible: false,
     previewImage: ''
   };
 
   submit() {
-    console.debug(this.props.form.getFieldsError());
+    this.props.form.validateFields((errors, values) => {
+      if (!errors) {
+        console.debug(values);
+      }
+    });
   }
+
+  ifNotChange() {
+    let fields = this.props.form.getFieldsValue();
+    return !dirty(fields, this.props);
+  }
+
   render() {
     const { form } = this.props;
     const { getFieldDecorator } = form;
-    console.debug(this.props);
     return (
-      <Form layout="vertical">
-        <FormItem
+      <Form>
+        {/* <FormItem
+          {...formItemLayout}
           label="头像"
         >
           {
             getFieldDecorator('head', {
               valuePropName: 'fileList',
             })(
-              <Upload
-                action="/api/upload/head"
-                listType="picture-card"
-                onPreview={(file) => this.setState({previewVisible: true, previewImage: file.url || file.thumbUrl})}
-                onChange={({ fileList }) => this.setState({ fileList })}
-              />
+              <Upload name="logo" action="/upload.do" listType="picture">
+                <Button>
+                  <Icon type="upload" /> Click to upload
+                </Button>
+              </Upload>
             )
           }
           <Modal
@@ -54,12 +75,15 @@ class ModifyProfile extends React.Component<ModifyProfileProps & FormComponentPr
           >
             <img alt="example" style={{ width: '100%' }} src={this.state.previewImage} />
           </Modal>
-        </FormItem>
+        </FormItem> */}
         <FormItem
+          {...formItemLayout}
           label="用户名"
         >
         {
-          getFieldDecorator('name')(
+          getFieldDecorator('name', {
+            initialValue: this.props.name,
+          })(
             <Input
               disabled={true}
             />
@@ -67,9 +91,17 @@ class ModifyProfile extends React.Component<ModifyProfileProps & FormComponentPr
         }
         </FormItem>
         <FormItem
-          label=""
+          {...formItemLayout}
+          label=" "
+          className="none"
         >
-          <Button onClick={() => this.submit()} type="primary" htmlType="submit" className="login-form-button">
+          <Button
+            disabled={this.ifNotChange()}
+            onClick={() => this.submit()}
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+          >
             提交
           </Button>
         </FormItem>

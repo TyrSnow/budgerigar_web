@@ -92,3 +92,6 @@ body {
 .page .ant-btn-ghost:hover, .page .ant-btn-ghost:focus {
   color: #3eaaaf;
   border-color: #3eaaaf; }
+
+.page .ant-form-item.none .ant-form-item-label label:after {
+  content: ""; }

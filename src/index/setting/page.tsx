@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
   Tabs,
-  Icon,
 } from 'antd';
 import './index.css';
 
 import ModifyPassword from './components/modifyPassword';
 import ModifyProfile from './components/modifyProfile';
+import ModifyIdentify from './components/modifyIdentify';
 
 const { TabPane } = Tabs;
 
@@ -26,16 +26,7 @@ class Setting extends React.Component {
               <div className="wrapper">
                 <h4 className="title">身份认证</h4>
                 <div className="inner">
-                  <p className="setting">
-                    <span className="key">邮箱</span>
-                    <span className="value">未绑定</span>
-                    <span className="edit"><Icon className="btnIcon" type="edit" /></span>
-                  </p>
-                  <p className="setting">
-                    <span className="key">手机号</span>
-                    <span className="value">未绑定</span>
-                    <span className="edit"><Icon className="btnIcon" type="edit" /></span>
-                  </p>
+                  <ModifyIdentify />
                 </div>
               </div>
               <div className="wrapper">
@@ -51,17 +42,7 @@ class Setting extends React.Component {
               <div className="wrapper">
                 <h4 className="title">语言设置</h4>
                 <div className="inner">
-                  <p className="setting">默认选中语言</p>
-                </div>
-              </div>
-            </div>
-          </TabPane>
-          <TabPane tab="邀请" key="3">
-            <div className="m-settingPane">
-              <div className="wrapper">
-                <h4 className="title">邀请码</h4>
-                <div className="inner">
-                  <p className="setting">显示用户的邀请码及剩余使用次数</p>
+                  <p className="setting">翻译可以选择若干主要语言而直接忽略其他语言的显示</p>
                 </div>
               </div>
             </div>

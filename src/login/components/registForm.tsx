@@ -40,7 +40,7 @@ class RegistForm extends React.Component<RegistProps & FormComponentProps, Regis
     });
   }
 
-  checkConfirm(rule: object, value: string, callback: any) {
+  checkConfirm = (rule: object, value: string, callback: any) => {
     const form = this.props.form;
     if (value && value !== form.getFieldValue('password')) {
       callback('Two passwords that you enter is inconsistent!');
@@ -91,7 +91,7 @@ class RegistForm extends React.Component<RegistProps & FormComponentProps, Regis
               required: true,
               message: 'Please confirm your password',
             }, {
-              validator: this.checkConfirm.bind(this),
+              validator: this.checkConfirm,
             }],
           })(
             <Input
