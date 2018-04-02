@@ -18,12 +18,7 @@ export default (state = initialState, action: AuthAction) => {
 
     case TYPES.UPDATE_USER:
       // 更新下拦截器
-      axios.interceptors.request.use(
-        (config) => {
-          config.headers.authorization = `Bearer ${action.user.token}`;
-          return config;
-        },
-      );
+      axios.defaults.headers.common.authorization = `Bearer ${action.user.token}`;
 
       // 存localStorage里
       localStorage.token = action.user.token;
