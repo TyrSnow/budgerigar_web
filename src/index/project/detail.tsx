@@ -17,12 +17,30 @@ import OutputTab from './tabs/output';
 
 const { TabPane } = Tabs;
 
+const DEFAULT_ACTIVE = 'output';
+
 interface ListProps {
   activeProj: any;
   loadActive: boolean;
 }
 
 class Detail extends React.Component<ListProps> {
+  static defaultProps = {
+    activeProj: {},
+  };
+
+  state = {
+    activeKey: DEFAULT_ACTIVE,
+  };
+
+  componentWillReceiveProps(nextProps: ListProps) {
+    if (nextProps.activeProj._id !== this.props.activeProj._id) {
+      this.setState({
+        activeKey: DEFAULT_ACTIVE,
+      });
+    }
+  }
+
   render() {
     if (!this.props.activeProj) {
       return (
@@ -43,7 +61,11 @@ class Detail extends React.Component<ListProps> {
           </span>
           {/* <Icon type="setting" /> */}
         </div>
-        <Tabs tabPosition="right">
+        <Tabs
+          activeKey={this.state.activeKey}
+          onChange={(key: string) => this.setState({ activeKey: key })}
+          tabPosition="right"
+        >
           <TabPane tab="翻译" key="translate">
             <TranslateTab />
           </TabPane>

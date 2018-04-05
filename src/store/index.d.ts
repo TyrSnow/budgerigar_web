@@ -13,8 +13,13 @@ export interface AuthState {
   token: string
 }
 
+export interface SystemState {
+
+}
+
 export interface AppState {
   auth: Map<String, AuthState>
+  system: Map<String, SystemState>
 }
 
 export interface AppStore extends Immutable.Map<String, AppState> {

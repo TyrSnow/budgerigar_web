@@ -39,7 +39,7 @@
       margin-bottom: 5px;
       display: flex;
       justify-content: space-between;
-      padding: 0 10px; }
+      padding: 5px 10px 0; }
       .m-project .m-projList .u-filter .filtBtn {
         border: none;
         background: none;
@@ -116,32 +116,34 @@
         cursor: pointer; }
         .m-project .m-translateTab .filters .filter .key:hover {
           color: #3EAAAF; }
-  .m-project .m-tabPane .wrapper {
-    margin-bottom: 10px; }
-    .m-project .m-tabPane .wrapper .title {
-      font-size: 16px;
-      border: none;
-      border-left: 5px solid #3EAAAF;
-      padding-left: 10px; }
-    .m-project .m-tabPane .wrapper .inner {
-      padding: 0 15px; }
-    .m-project .m-tabPane .wrapper .setting {
-      display: flex;
-      justify-content: space-between; }
-      .m-project .m-tabPane .wrapper .setting .key {
-        width: 100px;
-        display: inline-block;
-        margin-right: 10px;
-        text-align: right; }
-        .m-project .m-tabPane .wrapper .setting .key:after {
-          content: ':'; }
-        .m-project .m-tabPane .wrapper .setting .key .anticon {
-          margin: 0 5px; }
-      .m-project .m-tabPane .wrapper .setting .value {
-        width: 100%;
-        display: inline-block; }
-      .m-project .m-tabPane .wrapper .setting .editBtn:hover {
-        color: #3EAAAF; }
+  .m-project .m-tabPane {
+    padding: 20px; }
+    .m-project .m-tabPane .wrapper {
+      margin-bottom: 10px; }
+      .m-project .m-tabPane .wrapper .title {
+        font-size: 16px;
+        border: none;
+        border-left: 5px solid #3EAAAF;
+        padding-left: 10px; }
+      .m-project .m-tabPane .wrapper .inner {
+        padding: 0 15px; }
+      .m-project .m-tabPane .wrapper .setting {
+        display: flex;
+        justify-content: space-between; }
+        .m-project .m-tabPane .wrapper .setting .key {
+          width: 100px;
+          display: inline-block;
+          margin-right: 10px;
+          text-align: right; }
+          .m-project .m-tabPane .wrapper .setting .key:after {
+            content: ':'; }
+          .m-project .m-tabPane .wrapper .setting .key .anticon {
+            margin: 0 5px; }
+        .m-project .m-tabPane .wrapper .setting .value {
+          width: 100%;
+          display: inline-block; }
+        .m-project .m-tabPane .wrapper .setting .editBtn:hover {
+          color: #3EAAAF; }
   .m-project .u-members {
     display: flex; }
     .m-project .u-members .member {
@@ -156,3 +158,33 @@
         margin-top: 10px; }
       .m-project .u-members .member:hover .head {
         box-shadow: 1px 1px 1px #EEE; }
+  .m-project .m-outputTab .u-package {
+    border-bottom: 1px solid #E8E8E8;
+    padding: 10px 0;
+    display: flex;
+    align-items: center; }
+    .m-project .m-outputTab .u-package .u-info {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column; }
+      .m-project .m-outputTab .u-package .u-info .name, .m-project .m-outputTab .u-package .u-info .desc {
+        margin: 0;
+        line-height: 2.5; }
+    .m-project .m-outputTab .u-package .static {
+      width: 100px;
+      height: 25px; }
+    .m-project .m-outputTab .u-package .controls {
+      width: 70px;
+      height: 25px;
+      font-size: 20px; }
+      .m-project .m-outputTab .u-package .controls .anticon {
+        margin-left: 5px;
+        cursor: pointer; }
+        .m-project .m-outputTab .u-package .controls .anticon:hover {
+          color: #3eaaaf; }
+  .m-project .m-outputTab .noResult {
+    margin-top: 10px; }
+    .m-project .m-outputTab .noResult .u-package {
+      color: #999; }

@@ -1,17 +1,11 @@
 import * as React from 'react';
 import axios from 'axios';
 import {
-  Collapse,
-  Button,
   message,
+  Input,
 } from 'antd';
-
-const Panel = Collapse.Panel;
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
+import OutputPackage from './outputPackage';
+import OutputCreateForm from './outputCreate';
 
 /**
  * 1、新建一个语言包
@@ -29,37 +23,41 @@ interface OutputTabProps {
   project: any;
 }
 
-interface OutputTabState {
-  data: Array<any>;
-  loading: boolean;
-}
+class OutputTab extends React.Component<OutputTabProps> {
+  state = {
+    key: '',
+    data: [],
+    filted: [],
+    loading: false,
+  };
 
-class OutputTab extends React.Component<OutputTabProps, OutputTabState> {
-  constructor(props: OutputTabProps) {
-    super(props);
-    this.state = {
-      data: [],
-      loading: false,
-    };
-  }
+  timeout: any;
 
   componentWillMount() {
     this.fetch();
   }
 
-  fetch() {
+  componentWillReceiveProps(nextProps: OutputTabProps) {
+    if (nextProps.project._id !== this.props.project._id) {
+      this.fetch(nextProps.project._id);
+    }
+  }
+
+  fetch(id: string = this.props.project._id) {
     this.setState({
       loading: true,
     });
     axios({
       url: '/api/packages',
       params: {
-        project: this.props.project._id,
+        project: id,
       }
     }).then(
       (resp) => {
         this.setState({
+          key: '',
           data: resp.data.data,
+          filted: resp.data.data,
           loading: false,
         });
       }
@@ -71,28 +69,108 @@ class OutputTab extends React.Component<OutputTabProps, OutputTabState> {
     });
   }
 
+  filtList() {
+    const { data, key } = this.state;
+    const reg = new RegExp(key);
+    this.setState({
+      filted: data.filter((pack: any) => pack.name.match(reg)),
+    });
+  }
+
+  handleKeyChange(e: any) {
+    this.setState(
+      {
+        key: e.target.value,
+      },
+      () => {
+        if (this.timeout) {
+          clearTimeout(this.timeout);
+        }
+        this.timeout = setTimeout(
+          () => {
+            delete this.timeout;
+            this.filtList();
+          },
+          300,
+        );
+      }
+    );
+  }
+
+  handleCreate(fields: any) {
+    let pack = {
+      project: this.props.project._id,
+      name: this.state.key,
+      ...fields,
+    };
+    axios({
+      url: '/api/packages',
+      method: 'POST',
+      data: pack,
+    }).then((resp: any) => {
+      const list = [resp.data.data, ...this.state.data];
+      this.setState({
+        data: list,
+        filted: list,
+        key: '',
+      });
+    });
+  }
+
+  deletePackage(id: string) {
+    axios({
+      url: `/api/packages/${id}`,
+      method: 'delete',
+    }).then(
+      (resp) => {
+        message.success('语言包已删除');
+      },
+    ).catch(err => message.error(err.message));
+  }
+
+  editPackage(item: any) {
+    console.debug(item);
+  }
+
   render() {
     return (
       <div className="m-tabPane m-outputTab">
         <div className="u-controls">
-          <Button type="primary">新建</Button>
+          <Input value={this.state.key} onChange={e => this.handleKeyChange(e)} />
         </div>
         {
-          this.state.data.length > 0 ? (
-            <Collapse accordion={true}>
-              <Panel header="This is panel header 1" key="1">
-                <p>{text}</p>
-              </Panel>
-              <Panel header="This is panel header 2" key="2">
-                <p>{text}</p>
-              </Panel>
-              <Panel header="This is panel header 3" key="3">
-                <p>{text}</p>
-              </Panel>
-            </Collapse>
-          ) : (
-            <div className="empty">还没有语言包</div>
+          this.state.filted.map(
+            (pack: any) => (
+              <OutputPackage
+                onDelete={(id: string) => this.deletePackage(id)}
+                onEdit={(item: any) => this.editPackage(item)}
+                key={pack._id}
+                {...pack}
+              />
+            )
           )
+        }
+        {
+          this.state.filted.length === 0 ? (
+            <div className="noResult">
+              <OutputCreateForm onSubmit={(fields: any) => this.handleCreate(fields)} />
+              {
+                this.state.data.map(
+                  (pack: any) => (
+                    <OutputPackage
+                      key={pack._id}
+                      {...pack}
+                    />
+                  )
+                )
+              }
+            </div>
+          ) : (null)
+        }
+        {
+          this.state.data.length === 0 ? (
+            <div className="empty">还没有语言包</div>
+          ) : null
         }
       </div>
     );

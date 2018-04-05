@@ -2,11 +2,11 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import * as Immutable from 'immutable';
 import {
-  Input,
+  // Input,
   Icon,
   Tooltip,
 } from 'antd';
-const { Search } = Input;
+// const { Search } = Input;
 import CreateForm from './components/createForm';
 import { project } from '../../store/actions';
 
@@ -61,17 +61,17 @@ class ProjectList extends React.Component<ListProps, ListState> {
   render() {
     return (
       <div className="m-projList m-content">
-        <div className="u-search">
+        {/* <div className="u-search">
           <Search
             placeholder="input search text"
             onSearch={value => this.search(value)}
             enterButton={true}
           />
-        </div>
+        </div> */}
         <div className="u-filter">
           <div className="filters">
-            <button className="filtBtn active">我管理的</button>
-            <button className="filtBtn">全部</button>
+            <button className="filtBtn active">全部</button>
+            <button className="filtBtn">我管理的</button>
           </div>
           <button className="filtBtn refresh"><Icon type="reload" /></button>
           <button className="filtBtn newBtn" onClick={() => this.props.showCreate()}>+</button>

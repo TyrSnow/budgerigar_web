@@ -2,6 +2,7 @@
   "name": "budgerigar_web",
   "version": "0.1.0",
   "dependencies": {
+    "@types/prop-types": "^15.5.2",
     "antd": "^3.2.2",
     "axios": "^0.18.0",
     "history": "^4.7.2",

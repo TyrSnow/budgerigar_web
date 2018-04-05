@@ -1,0 +1,22 @@
+.m-spreadIconForm {
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  transition: all 1000ms;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  position: relative; }
+  .m-spreadIconForm .inner {
+    padding: 25px 30px; }
+  .m-spreadIconForm .u-icon {
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    left: 5px; }
+  .m-spreadIconForm.active {
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    border: 1px solid #EEE; }
+    .m-spreadIconForm.active .u-icon {
+      transform: rotate(45deg); }
