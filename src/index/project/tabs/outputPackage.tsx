@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  Tag,
   Icon,
 } from 'antd';
 import { Language } from '../../../definition/language';
@@ -26,7 +25,7 @@ class OutputPackage extends React.Component<OutputPackageProps> {
             {this.props.name}
             {
               this.props.languages.map(
-                ({_id, code}) => <Tag key={_id} color="#3eaaaf">{code}</Tag>
+                ({_id, code}) => <i key={code}>{code}</i>
               )
             }
           </p>
