@@ -46,7 +46,7 @@ class Index extends React.Component<IndexProps> {
           <NavLink className="link" to="/" exact={true} strict={true} activeClassName="active">项目</NavLink>
           <NavLink className="link" to="/setting" exact={true} strict={true} activeClassName="active">设置</NavLink>
           {
-            this.props.auth === AUTH_TYPE.ADMIN ? (
+            (this.props.auth === AUTH_TYPE.ADMIN || this.props.auth === AUTH_TYPE.ROOT) ? (
               <NavLink className="link" to="/system" exact={true} strict={true} activeClassName="active">系统参数</NavLink>
             ) : null
           }

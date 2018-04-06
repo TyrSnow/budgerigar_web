@@ -3,6 +3,7 @@ import {
   Icon,
 } from 'antd';
 import { Language } from '../../../definition/language';
+import OutputPackageStatictics from './outputPackageStatictics';
 
 interface OutputPackageProps {
   _id: string;
@@ -35,7 +36,9 @@ class OutputPackage extends React.Component<OutputPackageProps> {
             ) : null
           }
         </div>
-        <div className="static">{this.props.texts.length}</div>
+        <div className="static">
+          <OutputPackageStatictics name={'en'} value={10} total={100} />
+        </div>
         <div className="controls">
           {
             this.props.onDelete ? (

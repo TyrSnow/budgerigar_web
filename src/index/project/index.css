@@ -174,7 +174,8 @@
         line-height: 2.5; }
     .m-project .m-outputTab .u-package .static {
       width: 100px;
-      height: 25px; }
+      height: 50px;
+      text-align: center; }
     .m-project .m-outputTab .u-package .controls {
       width: 70px;
       height: 25px;
