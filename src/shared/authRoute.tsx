@@ -12,13 +12,21 @@ interface AuthProps {
 }
 
 class AdminAuth extends React.PureComponent<AuthProps> {
+  isRoot() {
+    return this.props.auth === AUTH_TYPE.ROOT;
+  }
+
+  isAdmin() {
+    return this.props.auth === AUTH_TYPE.ADMIN;
+  }
+
   render() {
     const {  component: Component, ...rest } = this.props;
     return (
       <Route
         {...rest}
         render={props =>
-          (this.props.isLogIn && this.props.auth === AUTH_TYPE.ADMIN) ? (
+          (this.props.isLogIn && (this.isAdmin() || this.isRoot())) ? (
             <Component {...this.props} />
           ) : (
             <Redirect
