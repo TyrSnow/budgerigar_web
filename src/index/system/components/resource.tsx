@@ -1,6 +1,8 @@
 import * as React from 'react';
 import ResourceLanguage from './resourceLanguage';
 
+import './resource.css';
+
 export default class Resource extends React.Component {
   render() {
     return (

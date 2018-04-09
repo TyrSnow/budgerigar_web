@@ -10,11 +10,19 @@ import UserManage from './components/userManage';
 const { TabPane } = Tabs;
 
 class System extends React.Component {
+  state = {
+    activeKey: 'media',
+  };
+
   render() {
     return (
       <div className="m-setting">
-        <Tabs tabPosition="left">
-          <TabPane tab="统计" key="1">
+        <Tabs
+          tabPosition="left"
+          onChange={activeKey => this.setState({ activeKey })}
+          activeKey={this.state.activeKey}
+        >
+          <TabPane tab="统计" key="analysis">
             <div className="m-settingPane">
               <div className="wrapper">
                 <div className="inner">
@@ -40,7 +48,7 @@ class System extends React.Component {
               </div>
             </div>
           </TabPane>
-          <TabPane tab="限额" key="2">
+          <TabPane tab="限额" key="maxStorage">
             <div className="m-settingPane">
               <div className="wrapper">
                 <h4 className="title">用户</h4>
@@ -84,13 +92,13 @@ class System extends React.Component {
               </div>
             </div>
           </TabPane>
-          <TabPane tab="用户管理" key="3">
+          <TabPane tab="用户管理" key="userManage">
             <UserManage />
           </TabPane>
-          <TabPane tab="素材管理" key="4">
+          <TabPane tab="素材管理" key="media">
             <Resource />
           </TabPane>
-          <TabPane tab="字典管理" key="5">
+          <TabPane tab="字典管理" key="dict">
             <div className="m-settingPane">
               <p>方便未来扩展使用</p>
               <p>思考把头像当成一种特殊的字典来处理</p>
