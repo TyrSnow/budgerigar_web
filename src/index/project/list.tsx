@@ -4,7 +4,7 @@ import * as Immutable from 'immutable';
 import {
   // Input,
   Icon,
-  Tooltip,
+  // Tooltip,
 } from 'antd';
 // const { Search } = Input;
 import CreateForm from './components/createForm';
@@ -39,14 +39,14 @@ class ProjectList extends React.Component<ListProps, ListState> {
             <span className="name">{_proj.name}</span>
             {/* <span className="stat">{proj.ready} / {proj.total}</span> */}
           </p>
-          <p className="flags">
+          {/* <p className="flags">
             <Tooltip placement="top" title="简体中文">
               <img className="flag" src="/images/dev/cn.jpg" alt="简体中文" />
             </Tooltip>
             <Tooltip placement="top" title="繁体中文">
               <img className="flag" src="/images/dev/cn.jpg" alt="繁体中文" />
             </Tooltip>
-          </p>
+          </p> */}
           <p className="info">{_proj.update_date}</p>
         </div>
       );

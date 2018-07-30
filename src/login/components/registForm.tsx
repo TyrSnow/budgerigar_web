@@ -49,6 +49,18 @@ class RegistForm extends React.Component<RegistProps & FormComponentProps, Regis
     }
   }
 
+  changeAgree() {
+    if (this.state.agree) {
+      this.setState({
+        agree: false,
+      });
+    } else {
+      this.setState({
+        protocalVisible: true,
+      });
+    }
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
@@ -104,7 +116,7 @@ class RegistForm extends React.Component<RegistProps & FormComponentProps, Regis
         </FormItem>
         <FormItem>
           <Checkbox
-            onChange={() => this.setState({protocalVisible: true})}
+            onChange={() => this.changeAgree()}
             checked={this.state.agree}
           >
             我已阅读并同意<span style={{ color: '#3eaaaf'}}>《用户许可协议》</span>

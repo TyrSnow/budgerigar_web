@@ -10,6 +10,7 @@ import { auth } from './store/actions';
 
 import Index from './index/index';
 import Login from './login/index';
+import Page500 from './pages/500';
 
 class App extends React.Component {
   componentWillMount() {
@@ -23,7 +24,7 @@ class App extends React.Component {
       <Provider store={store}>
         <Router history={history}>
           <Switch>
-            {/* <Route path="/protocal" component={Protocal} /> */}
+            <Route path="/500" component={Page500} />
             <Route path="/login" component={Login} />
             <Route path="/" component={Index} />
           </Switch>

@@ -17,7 +17,7 @@ import OutputTab from './tabs/output';
 
 const { TabPane } = Tabs;
 
-const DEFAULT_ACTIVE = 'output';
+const DEFAULT_ACTIVE = 'keyword';
 
 interface ListProps {
   activeProj: any;
