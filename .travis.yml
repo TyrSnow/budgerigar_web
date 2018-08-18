@@ -14,7 +14,8 @@ install:
   - Xvfb :99 -screen 0 1366x768x24 > /dev/null 2>&1 &
   - npm i npminstall && npminstall
 script:
-  - npm run build
+  - npm run build-css
+  - npm run build-js
 
 after_script:
   - tar -zcvf budgerigar.tar.gz --exclude=*.map build/*
