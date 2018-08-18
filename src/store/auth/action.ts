@@ -20,7 +20,7 @@ export function clearAuth(): any {
 export function regist(
   name: string,
   password: string,
-): ThunkAction<Promise<Action>, AppStore, any> {
+): ThunkAction<Promise<Action>, AppStore, any, any> {
   return (dispatch) => {
     return axios.post('/api/Users', {
       name,
@@ -35,7 +35,7 @@ export function logIn(
   user: string,
   password: string,
   remember: boolean = false
-): ThunkAction<Promise<Action>, AppStore, any> {
+): ThunkAction<Promise<Action>, AppStore, any, any> {
   return (dispatch) => {
     return axios.post('/api/Sessions', {
       user,
@@ -47,7 +47,7 @@ export function logIn(
   };
 }
 
-export function solveAuth(token: string): ThunkAction<Promise<Action>, AppStore, any> {
+export function solveAuth(token: string): ThunkAction<Promise<Action>, AppStore, any, any> {
   return (dispatch) => {
     return axios.get('/api/Sessions', {
       headers: {

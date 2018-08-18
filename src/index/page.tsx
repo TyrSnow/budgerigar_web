@@ -11,7 +11,6 @@ import Help from './help/index';
 import Setting from './setting/index';
 import System from './system/index';
 import { AdminRoute } from '../shared/authRoute';
-import store from '../store';
 import { system } from '../store/actions';
 
 interface IndexProps {
@@ -21,7 +20,7 @@ interface IndexProps {
 
 class Index extends React.Component<IndexProps> {
   componentWillMount() {
-    store.dispatch(system.loadLanguageList());
+    system.loadLanguageList();
   }
   render() {
     console.debug('Index Page render:', this.props);

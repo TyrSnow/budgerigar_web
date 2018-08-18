@@ -22,7 +22,7 @@ export function set_active(data: object): any {
   };
 }
 
-export function load_project(id: string): ThunkAction<Promise<Action>, AppStore, any> {
+export function load_project(id: string): ThunkAction<Promise<Action>, AppStore, any, any> {
   return (dispatch) => {
     dispatch({
       type: TYPES.LOAD_ACTIVE,
@@ -35,7 +35,7 @@ export function load_project(id: string): ThunkAction<Promise<Action>, AppStore,
   };
 }
 
-export function load_list(): ThunkAction<Promise<Action>, AppStore, any> {
+export function load_list(): ThunkAction<Promise<Action>, AppStore, any, any> {
   return (dispatch) => {
     return axios.get('/api/Projects').then(
       (resp) => {
@@ -55,7 +55,7 @@ export function append_list(data: ProjectListInfo): any {
   };
 }
 
-export function create(name: string): ThunkAction<Promise<Action>, AppStore, any> {
+export function create(name: string): ThunkAction<Promise<Action>, AppStore, any, any> {
   return (dispatch) => {
     return axios.post('/api/Projects', {
       name,
@@ -80,7 +80,7 @@ export function remove(id: string): any {
     id,
   };
 }
-export function deleteProj(id: string): ThunkAction<Promise<Action>, AppStore, any> {
+export function deleteProj(id: string): ThunkAction<Promise<Action>, AppStore, any, any> {
   return (dispatch, getState) => {
     return axios.delete(`/api/Projects/${id}`).then(
       resp => {

@@ -11,7 +11,7 @@ export function updateLanguage(languages: Array<Language>) {
     languages,
   };
 }
-export function loadLanguageList(): ThunkAction<Promise<Action>, AppStore, any> {
+export function loadLanguageList(): ThunkAction<Promise<Action>, AppStore, any, any> {
   return (dispatch) => {
     return axios.get('/api/languages?all').then(
       resp => dispatch(updateLanguage(resp.data.data)),

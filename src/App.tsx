@@ -15,7 +15,7 @@ import Page500 from './pages/500';
 class App extends React.Component {
   componentWillMount() {
     let token = sessionStorage.token;
-    store.dispatch(auth.solveAuth(token));
+    auth.solveAuth(token);
   }
 
   render() {

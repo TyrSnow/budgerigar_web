@@ -17,7 +17,7 @@ module.exports = function override(config, env) {
         libraryName: 'antd',
         libraryDirectory: 'es',
         style: true,
-      }) ]
+      })]
     })
   };
 
@@ -26,6 +26,23 @@ module.exports = function override(config, env) {
       "@primary-color": '#3eaaaf',
     },
   })(config, env);
+
+  const lessLoader = getLoader(
+    config.module.rules,
+    rule => 
+      rule.loader &&
+      typeof rule.loader === 'string' &&
+      rule.loader.includes('less-loader')
+  );
+
+  if (lessLoader) {
+    lessLoader.options.javascriptEnabled = true;
+  } else {
+    config.module.rules.push({
+      loader: 'less-loader',
+      options: { javascriptEnabled: true },
+    });
+  }
 
   return config;
 }
